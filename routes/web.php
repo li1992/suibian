@@ -10,7 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//
+Route::any("/","Admin\IndexController@index");
+Route::any("admin/index/{action?}",function(App\Http\Controllers\Admin\IndexController $index,$action='index'){
+	return $index->$action();
 
-Route::get('/', function () {
-    return view('welcome');
 });
+
