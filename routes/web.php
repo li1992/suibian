@@ -11,9 +11,10 @@
 |
 */
 //
-Route::any("/","Admin\IndexController@index");
-Route::any("admin/index/{action?}",function(App\Http\Controllers\Admin\IndexController $index,$action='index'){
+Route::any("/",'Admin\IndexController@index');
+// Route::any('index','Admin\IndexController@index');
+Route::any("admin/index/{action}",function(App\Http\Controllers\Admin\IndexController $index,$action='index'){
 	return $index->$action();
-
 });
+
 
