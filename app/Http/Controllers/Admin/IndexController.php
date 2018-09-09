@@ -20,15 +20,25 @@ class IndexController extends Controller{
 	}
 	public function login(){
 		//$res = DB::table('type')->where('t_id',3)->get()->toArray();
-		return view('admin.index.login');
+		$obj = new Type();
+		if(empty($_GET)){
+			$page=1;
+		}else{
+			$page = $_GET['p'] ;
+		}
+		$res = $obj->sele($page);
+		//$res = DB::select("select * from type");
+		$res= json_encode($res);
+		$res =json_decode($res,true);
+		return view('admin.index.login',compact('res'));
 	}
 	public function del(){
 		$id=$_GET['id'];
 		$res =DB::table('type')->where('t_id',$id)->delete();
 		if($res){
 			return redirect('admin/index/index');
-		}
-	} 
+		} 
+	}
 	public function upda(){
 		$id=$_GET['id'];
 		$res= DB::table('type')->where('t_id',$id)->get()->toArray();

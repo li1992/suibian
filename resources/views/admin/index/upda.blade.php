@@ -6,7 +6,7 @@
 </head>
 <body>
 	<center>
-		<form action="/admin/index/update" method="post">
+		<form action="update" method="post">
 		{{ csrf_field() }}
 		<input type="hidden" name="id" value="<?php echo $res[0]['t_id']?>">
 		名称：<input type="text" name="name" value="<?php echo $res[0]['name']?>">
